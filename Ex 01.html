@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EJERCICIO 1</title>
+    <style>
+        .clasediv {
+            float: left;
+            width: 150px;
+            height: 180px;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+
+        h3 {
+            text-align: center;
+            font-family: Verdana, sans-serif;
+            color: olive
+        }
+
+        li {
+            font-size: 25px;
+            font-family: Verdana, sans-serif;
+            color: olive
+        }
+
+        .divul {
+            clear: left;
+        }
+
+        img {
+            width: 150px;
+            height: 180px;
+        }
+
+        #boton {
+            display: none
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("h3").hide(2000).show(3000);
+            $("img:odd").hide(2000).slideDown(3000);
+            $("img:even").hide(2000).delay(4000).slideDown(3000);
+            $("img").hover(function () {
+                $(this).animate({ opacity: "0.4" });
+            }, function () {
+                $(this).animate({ opacity: "1" }, "slow");
+            });
+            $("img").one("click", function () {
+                $("ol").append($("<li>" + $(this).siblings("h3").html() + "</li>"));
+                $(this).animate({ opacity: "0.1" });
+                // $(this).off("click");
+                $(this).off("mouseenter").off("mouseleave");
+                check_boton();
+            });
+            $("#boton").on("click", function () {
+                $("li").each(function () {
+                    let animal = $(this).html();
+                    $("h3:contains('" + animal + "')").parent("div").detach().appendTo("#principal");
+                });
+            });
+        });
+        function check_boton() {
+            if ($("li").length == 6)
+                $("#boton").css("display", "block");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="principal">
+        <div class="clasediv">
+            <h3>Gato</h3><img src="animales/gato.PNG">
+        </div>
+        <div class="clasediv">
+            <h3>Perro</h3><img src="animales/perro.PNG">
+        </div>
+        <div class="clasediv">
+            <h3>Vaca</h3><img src="animales/vaca.PNG">
+        </div>
+        <div class="clasediv">
+            <h3>Burro</h3><img src="animales/burro.PNG">
+        </div>
+        <div class="clasediv">
+            <h3>Oveja</h3><img src="animales/oveja.PNG">
+        </div>
+        <div class="clasediv">
+            <h3>Cerdo</h3><img src="animales/cerdo.PNG">
+        </div>
+    </div>
+    <br><br>
+    <div class="divul">
+        <br><br>
+        <ol></ol>
+        <br><br>
+        <input type="button" id="boton" value="COLOCAR IMAGENES">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+[
+{
+    "framework": "Angular",
+    "desc": "Creado y mantenido por Google, Angular.Js es uno de los marcos de JavaScript más potentes y conocidos que ofrece a los desarrolladores las mejores respuestas para consolidar JavaScript con HTML y CSS. Es un framework pensado para trabajar en el front-end y de código abierto que permite a los diseñadores de programación ensamblar aplicaciones web intuitivas de una sola página (SPA) como ninguna otra.",
+	"img": "img/angular.jpg",
+	 "web": "https://angular.io/"
+  },
+  {
+    "framework": "Vue",
+    "desc":"Es un framework de JavaScript de código abierto para la construcción de interfaces de usuario y aplicaciones de una sola página. Fue creado por Evan You, y es mantenido por él y por el resto de los miembros activos del equipo central que provienen de diversas empresas como Netlify y Netguru",
+	  "img": "img/vue.jpg",
+	  "web": "https://vuejs.org/"
+  },
+  {
+    "framework": "React",
+    "desc":"Creado por Facebook, ReactJS es una biblioteca de JavaScript de código abierto muy efectiva utilizada para crear interfaces de usuario intuitivas. Los administradores del sitio web utilizan este marco para ocuparse de la capa de visualización de aplicaciones y sitios complejos. React.js es más rápido que Angular.js - Sí, lo es - y es una decisión ideal para las personas que necesitan un marco básico, versátil y rápido.",
+	"img": "img/react.jpg",
+	"web":"https://es.reactjs.org/"
+  },
+  {
+    "framework": "Ember",
+    "desc":"Se trata de un framework front-end orientado al desarrollo de proyectos de modo ágil y productivo y que puedan ser mantenidos a largo plazo como por ejemplo aplicaciones web o móviles.",
+	"img": "img/ember.jpg",
+    "web": "https://emberjs.com/"
+  }
+]

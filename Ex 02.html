@@ -1,0 +1,59 @@
+<head>
+    <title>Examen Ejercicio 1</title>
+    <meta charset="utf-8">
+    <link rel="StyleSheet" href="estilos1.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        function func_entrar() {
+            let archivo = prompt("Introduce archivo a cargar", "frames.json");
+            cargar_peticion(archivo);
+        }
+        function lanzar_peticion(peticion) {
+            alert("La petición se está realizando");
+        }
+        function error_peticion(peticion) {
+            $("#demo").html("Se ha producido un error: " + peticion.status
+                + " " + peticion.statusText);
+        }
+        function estado_peticion(peticion) {
+            $("#estado").html("Petición finalizada: " + peticion.status
+                + " " + peticion.statusText);
+        }
+        function cargar_peticion(archivo) {
+            let peticion_http = new XMLHttpRequest();
+            peticion_http.onload = () => {
+                if (peticion_http.readyState == 4) {
+                    if (peticion_http.status == 200) {
+                        let xml = JSON.parse(peticion_http.responseText);
+                        let tabla = $("<table></table>");
+                        for (let i = 0; i < xml.length; i++) {
+                            let html = $("<tr></tr>")
+                                .append($("<td></td>")
+                                    .append("<img src='" + String(xml[i].img).toLowerCase() + "'>"))
+                                .append($("<td></td>")
+                                    .append($("<a href='" + xml[i].web + "'>" + xml[i].framework + "</a>")));;
+                            $(tabla).append(html);
+                        }
+                        $("#demo").append(tabla);
+                    }
+                    else
+                        error_peticion(peticion_http);
+                }
+                estado_peticion(peticion_http);
+            };
+            peticion_http.open("GET", archivo, true);
+            lanzar_peticion(peticion_http);
+            peticion_http.send();
+        }
+    </script>
+</head>
+
+<body onload="func_entrar();">
+    <div id="demo">
+    </div>
+    <br><br>
+    <div id="estado">
+    </div>
+</body>
+
+</html>
